@@ -1,0 +1,549 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #e9eef5;
+    padding: 20px;
+    color: #1e293b;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Grid Utama */
+.dashboard-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #f4f7fc;
+    border-radius: 14px;
+    padding: 24px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+    display: grid;
+    grid-template-columns: 220px 1.35fr 1fr 1fr;
+    grid-template-areas:
+        "header header header header"
+        "nav main main main"
+        "nav aside section1 section2"
+        "nav footer footer footer";
+    gap: 20px;
+    transition: background-color 0.3s ease;
+}
+
+/* <header> */
+header {
+    grid-area: header;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 6px;
+}
+
+header h1 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #034687;
+}
+
+header form input {
+    width: 280px;
+    padding: 10px 16px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 12px;
+    background-color: #ffffff;
+    outline: none;
+}
+
+header form input:focus {
+    border-color: #0353a4;
+}
+
+/* <nav> Sidebar */
+nav {
+    grid-area: nav;
+    background-color: #034687;
+    border-radius: 10px;
+    padding: 25px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #e2e8f0;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 12px 18px;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+nav a:hover,
+nav a.active {
+    background-color: #023366;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* <main> Banner Selamat Datang */
+main {
+    grid-area: main;
+    background: linear-gradient(135deg, #0353a4 0%, #023e7d 100%);
+    border-radius: 10px;
+    padding: 24px 30px;
+    color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.welcome-text h2 {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 8px;
+}
+
+.welcome-text p {
+    font-size: 12px;
+    color: #dbeafe;
+    max-width: 520px;
+}
+
+.avatar-circle {
+    width: 82px;
+    height: 82px;
+    border-radius: 50%;
+    background-color: #dbeafe;
+    border: 3px solid #60a5fa;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatar-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Kartu Konten Umum */
+aside,
+.section1,
+.section2,
+footer {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 18px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    transition: all 0.3s ease;
+}
+
+/* WARNA SOROTAN SAAT MENU/PENCARIAN DIKLIK ATAU DIKETIK */
+.highlight-card {
+    background-color: #bbf7d0 !important;
+    border: 2px solid #16a34a !important;
+    box-shadow: 0 8px 20px rgba(22, 163, 74, 0.25) !important;
+    transform: translateY(-2px);
+}
+
+.highlight-card h3 {
+    color: #166534 !important;
+    font-weight: 700 !important;
+}
+
+aside h3,
+.section1 h3,
+.section2 h3,
+footer h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 14px;
+}
+
+/* <aside> Statistik Mahasiswa & Overlay Garis Trend */
+aside {
+    grid-area: aside;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.chart-container-wrapper {
+    position: relative;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.image-chart-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-chart-container img {
+    width: 100%;
+    height: auto;
+    max-height: 250px;
+    object-fit: contain;
+    display: block;
+    border-radius: 6px;
+}
+
+/* Lapisan SVG Garis Trend Melengkung di atas Grafik */
+.trend-line-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+}
+
+/* <section1> & <section2> */
+.section1 {
+    grid-area: section1;
+}
+
+.section2 {
+    grid-area: section2;
+}
+
+.list-item {
+    background-color: #f1f5f9;
+    padding: 10px 14px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.list-item:last-child {
+    margin-bottom: 0;
+}
+
+.list-item strong {
+    font-size: 12px;
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.list-item span {
+    font-size: 11px;
+    color: #64748b;
+    margin-top: 2px;
+}
+
+.list-item .date-text {
+    color: #0353a4;
+    font-weight: 500;
+}
+
+/* <footer> Lampiran */
+footer {
+    grid-area: footer;
+}
+
+.attachment-item {
+    background-color: #f1f5f9;
+    padding: 11px 16px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.attachment-item:last-child {
+    margin-bottom: 0;
+}
+
+.attachment-item p {
+    font-size: 12px;
+    color: #334155;
+}
+
+.attachment-item a {
+    color: #0353a4;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+/* Modal Settings */
+.settings-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15, 23, 42, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.settings-card {
+    background-color: #ffffff;
+    border-radius: 14px;
+    padding: 26px 28px;
+    max-width: 440px;
+    width: 100%;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
+    border: 1px solid #e2e8f0;
+}
+
+.settings-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.settings-header h2 {
+    font-size: 18px;
+    color: #034687;
+}
+
+.close-settings-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #64748b;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.close-settings-btn:hover {
+    color: #0f172a;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 6px;
+}
+
+.form-group input[type="text"] {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 13px;
+    outline: none;
+}
+
+.form-group input[type="text"]:focus {
+    border-color: #0353a4;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.checkbox-group label {
+    margin-bottom: 0;
+    cursor: pointer;
+}
+
+.settings-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 22px;
+}
+
+.btn-cancel {
+    background-color: #e2e8f0;
+    color: #334155;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-cancel:hover {
+    background-color: #cbd5e1;
+}
+
+.btn-save {
+    background-color: #034687;
+    color: #ffffff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-save:hover {
+    background-color: #023366;
+}
+
+/* Mode Gelap (Dark Mode) */
+body.dark-mode {
+    background-color: #0f172a;
+    color: #f1f5f9;
+}
+
+body.dark-mode .dashboard-container {
+    background-color: #1e293b;
+}
+
+body.dark-mode header h1 {
+    color: #60a5fa;
+}
+
+body.dark-mode header form input {
+    background-color: #0f172a;
+    border-color: #334155;
+    color: #f1f5f9;
+}
+
+body.dark-mode aside,
+body.dark-mode .section1,
+body.dark-mode .section2,
+body.dark-mode footer,
+body.dark-mode .settings-card,
+body.dark-mode .logout-card {
+    background-color: #0f172a;
+    border-color: #334155;
+    color: #f1f5f9;
+}
+
+body.dark-mode aside h3,
+body.dark-mode .section1 h3,
+body.dark-mode .section2 h3,
+body.dark-mode footer h3,
+body.dark-mode .settings-header h2,
+body.dark-mode .logout-card h2 {
+    color: #f8fafc;
+}
+
+body.dark-mode .list-item,
+body.dark-mode .attachment-item {
+    background-color: #1e293b;
+}
+
+body.dark-mode .list-item strong,
+body.dark-mode .attachment-item p,
+body.dark-mode .form-group label,
+body.dark-mode .logout-card p {
+    color: #e2e8f0;
+}
+
+body.dark-mode .list-item span {
+    color: #94a3b8;
+}
+
+body.dark-mode .list-item .date-text,
+body.dark-mode .attachment-item a {
+    color: #38bdf8;
+}
+
+body.dark-mode .form-group input[type="text"] {
+    background-color: #1e293b;
+    border-color: #334155;
+    color: #f8fafc;
+}
+
+/* Tampilan Layar Keluar (Sign Out) */
+.logout-screen {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logout-card {
+    background-color: #ffffff;
+    padding: 40px 36px;
+    border-radius: 14px;
+    text-align: center;
+    max-width: 440px;
+    width: 100%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e2e8f0;
+}
+
+.logout-card h2 {
+    color: #034687;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.logout-card p {
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.logout-card button {
+    background-color: #034687;
+    color: #ffffff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.logout-card button:hover {
+    background-color: #023366;
+}
+
+/* Responsif untuk layar HP */
+@media (max-width: 960px) {
+    .dashboard-container {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "header"
+            "nav"
+            "main"
+            "aside"
+            "section1"
+            "section2"
+            "footer";
+    }
+
+    nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

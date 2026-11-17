@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Dashboard - Alda Savira Mugesti</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="dashboard-container" id="dashboardContainer">
+        <header>
+            <h1>Royal Dashboard</h1>
+            <form onsubmit="return false;">
+                <input type="text" id="searchInput" placeholder="Cari Kelas, Dokumen, Aktifitas dll...">
+            </form>
+        </header>
+
+        <nav>
+            <a href="#" class="nav-link active" data-menu="Home">Home</a>
+            <a href="#" class="nav-link" data-menu="Mahasiswa">Mahasiswa</a>
+            <a href="#" class="nav-link" data-menu="Kelas">Kelas</a>
+            <a href="#" class="nav-link" data-menu="Aktifitas">Aktifitas</a>
+            <a href="#" class="nav-link" data-menu="Statistik">Statistik</a>
+            <a href="#" class="nav-link" data-menu="Dokumen">Dokumen</a>
+            <a href="#" class="nav-link" data-menu="Settings">Settings</a>
+            <a href="#" class="nav-link" data-menu="Sign Out">Sign Out</a>
+        </nav>
+
+        <main>
+            <div class="welcome-text">
+                <h2 id="welcomeHeading">Selamat Datang, Nama Mahasiswa<br>Kelas SI</h2>
+                <p>Kamu memiliki Statistik, 3 Progres Kelas, 4 Aktifitas Selanjutnya dan 3 Lampiran Dokumen yang ada pada aplikasi ini.</p>
+            </div>
+            <div class="welcome-avatar">
+                <div class="avatar-circle">
+                    <img src="ALLL.jpeg" alt="Foto Profil">
+                </div>
+            </div>
+        </main>
+
+        <aside id="card-statistik" class="dashboard-card">
+            <h3>Statistik Mahasiswa</h3>
+            <div class="chart-container-wrapper">
+                <!-- Grafik Batang SVG Asli -->
+                <div class="image-chart-container">
+                    <img src="Chart_Statistik.svg" alt="Statistik Mahasiswa">
+                </div>
+
+                <!-- Garis Tren Melengkung -->
+                <svg class="trend-line-overlay" viewBox="0 0 300 200" preserveAspectRatio="none">
+                    <path d="M 48 150 Q 105 90, 165 118 T 278 92" 
+                          fill="none" 
+                          stroke="#14b8a6" 
+                          stroke-width="2.2" 
+                          stroke-linecap="round" />
+                </svg>
+            </div>
+        </aside>
+
+        <section id="card-kelas" class="section1 dashboard-card">
+            <h3>Progres Kelas</h3>
+            <div class="list-item searchable-item">
+                <strong>Matakuliah A</strong>
+                <span>78 Pendaftar</span>
+            </div>
+            <div class="list-item searchable-item">
+                <strong>Matakuliah B</strong>
+                <span>30 Pendaftar</span>
+            </div>
+            <div class="list-item searchable-item">
+                <strong>Matakuliah C</strong>
+                <span>40 Pendaftar</span>
+            </div>
+            <div class="list-item searchable-item">
+                <strong>Matakuliah D</strong>
+                <span>10 Pendaftar</span>
+            </div>
+        </section>
+
+        <section id="card-aktifitas" class="section2 dashboard-card">
+            <h3>Aktifitas Selanjutnya</h3>
+            <div class="list-item searchable-item">
+                <strong>Perkuliahan Daring 1</strong>
+                <span class="date-text">Senin, 15 Januari 2025</span>
+            </div>
+            <div class="list-item searchable-item">
+                <strong>Perkuliahan Daring 1</strong>
+                <span class="date-text">Selasa, 15 Februari 2025</span>
+            </div>
+            <div class="list-item searchable-item">
+                <strong>Perkuliahan Daring 1</strong>
+                <span class="date-text">Rabu, 15 Maret 2025</span>
+            </div>
+            <div class="list-item searchable-item">
+                <strong>Perkuliahan Daring 1</strong>
+                <span class="date-text">Kamis, 15 April 2025</span>
+            </div>
+        </section>
+
+        <footer id="card-dokumen" class="dashboard-card">
+            <h3>Lampiran</h3>
+            <div class="attachment-item searchable-item">
+                <p><strong>Lampiran Dokumen 1</strong> - Matakuliah A | Tugas Bersama Perkuliahan Daring  |  <a href="#" class="doc-link" data-doc="Lampiran Dokumen 1 - Matakuliah A">Lihat Dokumen</a></p>
+            </div>
+            <div class="attachment-item searchable-item">
+                <p><strong>Lampiran Dokumen 2</strong> - Matakuliah B | Tugas Bersama Perkuliahan Daring  |  <a href="#" class="doc-link" data-doc="Lampiran Dokumen 2 - Matakuliah B">Lihat Dokumen</a></p>
+            </div>
+            <div class="attachment-item searchable-item">
+                <p><strong>Lampiran Dokumen 3</strong> - Matakuliah C | Tugas Bersama Perkuliahan Daring  |  <a href="#" class="doc-link" data-doc="Lampiran Dokumen 3 - Matakuliah C">Lihat Dokumen</a></p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Modal Pengaturan (Settings) -->
+    <div class="settings-modal-overlay" id="settingsModal" style="display: none;">
+        <div class="settings-card">
+            <div class="settings-header">
+                <h2>Pengaturan Dashboard</h2>
+                <button type="button" class="close-settings-btn" id="closeSettingsBtn">×</button>
+            </div>
+            <form id="settingsForm">
+                <div class="form-group">
+                    <label for="inputNama">Nama Mahasiswa</label>
+                    <input type="text" id="inputNama" value="ALDA SAVIRA MUGESTI" required>
+                </div>
+                <div class="form-group">
+                    <label for="inputKelas">Kelas</label>
+                    <input type="text" id="inputKelas" value="SI 3-E" required>
+                </div>
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="darkModeToggle">
+                    <label for="darkModeToggle">Aktifkan Mode Gelap (Dark Mode)</label>
+                </div>
+                <div class="settings-actions">
+                    <button type="button" class="btn-cancel" id="cancelSettingsBtn">Batal</button>
+                    <button type="submit" class="btn-save">Simpan Perubahan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Layar Saat Keluar (Sign Out) -->
+    <div class="logout-screen" id="logoutScreen" style="display: none;">
+        <div class="logout-card">
+            <h2>Anda Telah Keluar</h2>
+            <p>Terima kasih, <strong id="logoutUserName">ALDA SAVIRA MUGESTI</strong>. Sesi Anda di Royal Dashboard telah berakhir.</p>
+            <button id="loginAgainBtn">Masuk Kembali ke Dashboard</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
